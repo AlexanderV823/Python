@@ -12,6 +12,11 @@ def print_message(str_perimeter, str_area):
         print(f'Периметр: {str_perimeter}')
         print(f'Площадь: {str_area}')
 
+# Вывод расчета
+def print_calc(credit_cost, accumulation):
+        print(f'Вывод:')
+        print(f'За год потрачено на кредиты : {credit_cost}')
+        print(f'Накоплено за год: {accumulation}')
 
 #  Попытка
 try:
@@ -37,5 +42,20 @@ try:
             print_message(perimeter, area)
       else:
             print('Введите положительные числа!')
+except ValueError:
+      print('Введены не числовые значения!')
+
+try:
+      mounth_salary = float(input('Введите заработную плату в месяц: '))
+      credit_percent = int(input('Какой процент от зарплаты уходит на погашение кредитов? '))
+      life_percent = int(input('Какой процент от зарплаты уходит бытовые траты? '))
+
+      if mounth_salary > 0:  
+            year_credit_cost = (mounth_salary * credit_percent / 100) * 12
+            year_accumulation = mounth_salary * 12 - ((mounth_salary * life_percent / 100) * 12 + year_credit_cost) 
+            print_calc(year_credit_cost, year_accumulation)
+      else:
+            print('Введите положительные числа!')
+#  Исключение
 except ValueError:
       print('Введены не числовые значения!')
