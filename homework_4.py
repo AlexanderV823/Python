@@ -33,6 +33,12 @@ for user_id, list  in  ids.items():
     unic_ids.update(list)
 print(unic_ids)
 
+# Эталон
+my_set = set()
+for geo_ids in ids.values():
+    my_set |= set(geo_ids)
+print(list(my_set))
+
 # Задача 3
 
 queries = [
@@ -61,7 +67,15 @@ print(total_queries, queries_dict)
 for key, value in queries_dict.items():
     print(f'Поисковых запросов содержащих {key} слов{'о' if key % 10 == 1 else 'а' if key % 10 in (2, 3, 4) else ''} {round(value * 100 / total_queries, 2)}%')
 
-Задача 4
+# Эталон
+number_words = [len(query.split()) for query in queries]
+result = dict.fromkeys(set(number_words), 0)
+for count_word in result:
+    result[count_word] = number_words.count(count_word)
+for word in result.items():
+    print(f'Запросов с {word[0]} словами(словом) -  {round((word[1] * 100 / len(queries)), 2)}%')
+
+# Задача 4
 
 stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
 
@@ -74,6 +88,12 @@ for chanel, count in stats.items():
         k_max_stats = chanel
 
 print(f'Через {k_max_stats} было максимальное число продаж. Количество {v_max_stats}')
+
+# Эталон
+
+stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
+new_stats = sorted(stats.items(), key=lambda x: x[1], reverse=True)
+print(new_stats[0][0])
 
 # Задача 5
 # Попробовать решить через рекурсию
@@ -90,3 +110,13 @@ if len(test_list) > 1:
         del(test_list[-1])
         test_list.append(x_dict)
 print(x_dict)
+
+# Эталон
+
+lst = ['2018-01-01', 'yandex', 'cpc', 100]
+lst = list(reversed(lst))
+new_dict = lst[0]
+for e in lst[1:]:
+    new_dict = {e: new_dict}
+
+print(new_dict)
