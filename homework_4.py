@@ -33,30 +33,44 @@
 #     unic_ids.update(list)
 # print(unic_ids)
 
-# Задача 3
+# # Задача 3
 
-queries = [
-    'смотреть сериалы онлайн',
-    'новости спорта',
-    'афиша кино',
-    'курс доллара',
-    'сериалы этим летом',
-    'курс по питону',
-    'курc',
-    'сериалы про спорт'
-    ]
+# queries = [
+#     'смотреть сериалы онлайн',
+#     'новости спорта',
+#     'афиша кино',
+#     'курс доллара',
+#     'сериалы этим летом',
+#     'курс по питону',
+#     'курc',
+#     'сериалы про спорт'
+#     ]
 
-total_queries = len(queries)
-queries_dict = dict()
+# total_queries = len(queries)
+# queries_dict = dict()
 
-for string in queries:
-    if queries_dict.get(len(string.split())) is None:
-        queries_dict[len(string.split())] = 1
-    else:
-        x = queries_dict.get(len(string.split()))
-        queries_dict[len(string.split())] = x + 1                      
+# for string in queries:
+#     if queries_dict.get(len(string.split())) is None:
+#         queries_dict[len(string.split())] = 1
+#     else:
+#         x = queries_dict.get(len(string.split()))
+#         queries_dict[len(string.split())] = x + 1                      
 
-print(total_queries, queries_dict)
+# print(total_queries, queries_dict)
 
-for key, value in queries_dict.items():
-    print(f'Поисковых запросов содержащих {key} слов{'о' if key % 10 == 1 else 'а' if key % 10 in (2, 3, 4) else ''} {round(value * 100 / total_queries, 2)}%')
+# for key, value in queries_dict.items():
+#     print(f'Поисковых запросов содержащих {key} слов{'о' if key % 10 == 1 else 'а' if key % 10 in (2, 3, 4) else ''} {round(value * 100 / total_queries, 2)}%')
+
+# Задача 4
+
+stats = {'facebook': 55, 'yandex': 120, 'vk': 115, 'google': 99, 'email': 42, 'ok': 98}
+
+k_max_stats = ''
+v_max_stats = 0
+
+for chanel, count in stats.items():
+    if count > v_max_stats:
+        v_max_stats = count
+        k_max_stats = chanel
+
+print(f'Через {k_max_stats} было максимальное число продаж. Количество {v_max_stats}')
