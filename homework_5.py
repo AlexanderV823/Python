@@ -39,11 +39,13 @@ def print_list():
     for document in documents:
         print(f'{document.get("type")} "{document.get("number")}" "{document.get("name")}"')
 
-def put_document(dict_doc: dict, shelf_id: str):
+def put_document():
+    new_doc = {"type": str(input('Введите тип документа: ')), "number": str(input('Введите номер документа: ')), "name": str(input('Введите имя владельца документа: '))}
+    shelf_id = str(input('Введите номер полки: '))
     if shelf_id in directories:
-        documents.append(dict_doc)
+        documents.append(new_doc)
         shelf_list = directories.get(shelf_id)
-        shelf_list.append(dict_doc.get("number"))
+        shelf_list.append(new_doc.get("number"))
         print(f'Документ добавлен на полку: {shelf_id}')
     else:
         print(f'Документ не добавлен в каталог. Указанной полки не существует.')
@@ -113,8 +115,7 @@ def main():
         elif user_input == 'l':
              print_list()
         elif user_input == 'a':          
-            new_doc = {"type": str(input('Введите тип документа: ')), "number": str(input('Введите номер документа: ')), "name": str(input('Введите имя владельца документа: '))}
-            put_document(new_doc, str(input('Введите номер полки: ')))
+            put_document()
         elif user_input == 'd':
             del_document(str(input('Введите номер документа: ')))
         elif user_input == 'm':
