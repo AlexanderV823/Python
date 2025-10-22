@@ -86,4 +86,4 @@ print(ceo_1.salary)
 
 worker = Worker('Сидоров')
 
-print(ceo_1 < worker) # Вернет 'Не CEO' и None
+ceo_1 < worker # Вернет 'Не CEO' и None
