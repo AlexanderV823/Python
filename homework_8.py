@@ -1,9 +1,9 @@
-# Задача 1
 from pprint import pprint
 import os
 
 cook_book = dict()
 
+# Задача 1
 def add_cook_book(file_name: str):
     if os.path.exists(file_name) and os.path.isfile(file_name):
         with open(file_name, 'r', encoding='UTF-8') as file:      
@@ -27,6 +27,7 @@ def add_cook_book(file_name: str):
     else:
         print("Файл не найден")
 
+# Задача 2
 def print_ingridients(dishes: list, persons: int):
     ingridients_dict = dict()
     for dish in dishes:
