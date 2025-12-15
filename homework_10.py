@@ -75,9 +75,9 @@ with open(full_path, 'rb') as f:
             
     print('Файл загружен!')
 
-    # Эталон
+# Эталон
 
-    import requests
+import requests
 import os
 
 
