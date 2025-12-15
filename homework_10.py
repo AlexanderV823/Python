@@ -110,3 +110,28 @@ if __name__ == '__main__':
     uploader = YaUploader(auth_token)
     result = uploader.upload(my_file_path)
     print(result)
+
+# Задача 3
+
+import requests
+from pprint import pprint
+from datetime import datetime, timedelta
+
+now = datetime.now()
+two_days_ago = now - timedelta(days=2)
+unix_timestamp = int(two_days_ago.timestamp())
+
+params = {'fromdate': unix_timestamp,
+            'order': 'desc',
+            'sort': 'activity',
+            'tagged': 'Python',
+            'site': 'stackoverflow'}
+
+url = 'https://api.stackexchange.com/2.3/questions'
+resp = requests.get(url, params=params)
+
+if resp.status_code != 200:
+    raise Exception("Ответ не 200!")
+
+data = resp.json()
+pprint(data)
